@@ -1,7 +1,7 @@
 # 1. Usamos una imagen que ya tiene Java y Maven instalados para compilar
 FROM maven:3.8.4-openjdk-17 AS build
 COPY . .
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests -Dproject.build.sourceEncoding=UTF-8
 
 # 2. Usamos una imagen más ligera solo para ejecutar el programa
 FROM eclipse-temurin:17-jdk-alpine
