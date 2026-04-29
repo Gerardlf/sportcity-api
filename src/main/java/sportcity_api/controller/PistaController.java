@@ -1,10 +1,7 @@
 package sportcity_api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sportcity_api.model.Pista;
 import sportcity_api.repository.PistaRepository;
 
@@ -42,5 +39,10 @@ public class PistaController {
         return pistaRepository.findById(id).orElse(null);
     }
 
+    // Crear una nueva pista
+    @PostMapping
+    public Pista crearPista(@RequestBody Pista nuevaPista) {
+        return pistaRepository.save(nuevaPista);
+    }
 
 }
