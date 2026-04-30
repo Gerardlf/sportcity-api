@@ -35,7 +35,7 @@ public class ReservaController {
     public Reserva actualizarReserva(@PathVariable int id, @RequestBody Reserva reservaActualizada) {
         return reservaRepository.findById(id)
                 .map(reserva -> {
-                    reserva.setId(reservaActualizada.getId());
+                    reserva.setPistaId(reservaActualizada.getPistaId());
                     reserva.setPistaNombre(reservaActualizada.getPistaNombre());
                     reserva.setFecha(reservaActualizada.getFecha());
                     reserva.setHora(reservaActualizada.getHora());
