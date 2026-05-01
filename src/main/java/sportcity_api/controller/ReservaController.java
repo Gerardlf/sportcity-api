@@ -21,6 +21,12 @@ public class ReservaController {
         return reservaRepository.findAll();
     }
 
+    //Obtener reservas segun id usuario
+    @GetMapping("/usuario/{usuarioId}")
+    public List<Reserva> getReservasPorUsuario(@PathVariable String usuarioId) {
+        return reservaRepository.findByUsuarioId(usuarioId);
+    }
+
 
     //Crear un nueva reserva (metodo POST)
     @PostMapping
@@ -43,6 +49,7 @@ public class ReservaController {
                     reserva.setTelefonoCliente(reservaActualizada.getTelefonoCliente());
                     reserva.setDeporte(reservaActualizada.getDeporte());
                     reserva.setComentario(reservaActualizada.getComentario());
+                    reserva.setUsuarioId(reservaActualizada.getUsuarioId());
                     return reservaRepository.save(reserva);
                 })
                 .orElse(null);

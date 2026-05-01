@@ -11,6 +11,7 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int pistaId;
+    private String usuarioId;
     private String pistaNombre;
     private String fecha;
     private String hora;
@@ -23,9 +24,10 @@ public class Reserva {
     public Reserva() {
     }
 
-    public Reserva(int pistaId, String pistaNombre, String fecha, String hora, String nombreCliente, String telefonoCliente, String comentario, String deporte) {
-
+    public Reserva(int id, int pistaId, String usuarioId, String pistaNombre, String fecha, String hora, String nombreCliente, String telefonoCliente, String comentario, String deporte) {
+        this.id = id;
         this.pistaId = pistaId;
+        this.usuarioId = usuarioId;
         this.pistaNombre = pistaNombre;
         this.fecha = fecha;
         this.hora = hora;
@@ -105,5 +107,13 @@ public class Reserva {
 
     public void setDeporte(String deporte) {
         this.deporte = deporte;
+    }
+
+    public String getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(String usuarioId) {
+        this.usuarioId = usuarioId;
     }
 }
