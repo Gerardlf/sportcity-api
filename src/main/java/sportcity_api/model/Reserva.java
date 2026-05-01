@@ -9,7 +9,7 @@ public class Reserva {
     //Clave primaria y autoincremento
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private int pistaId;
     private String usuarioId;
     private String pistaNombre;
@@ -24,7 +24,7 @@ public class Reserva {
     public Reserva() {
     }
 
-    public Reserva(int id, int pistaId, String usuarioId, String pistaNombre, String fecha, String hora, String nombreCliente, String telefonoCliente, String comentario, String deporte) {
+    public Reserva(Integer id, int pistaId, String usuarioId, String pistaNombre, String fecha, String hora, String nombreCliente, String telefonoCliente, String comentario, String deporte) {
         this.id = id;
         this.pistaId = pistaId;
         this.usuarioId = usuarioId;
@@ -37,11 +37,11 @@ public class Reserva {
         this.deporte = deporte;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
