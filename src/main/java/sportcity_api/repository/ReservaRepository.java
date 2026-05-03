@@ -11,4 +11,6 @@ import java.util.List;
 public interface ReservaRepository extends JpaRepository<Reserva, Integer> {
 
     List<Reserva> findByUsuarioId(String usuarioId);
+
+    boolean existsByPistaIdAndFechaAndHora(int pistaId, String fecha, String hora);
 }

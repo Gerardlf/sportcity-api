@@ -1,6 +1,8 @@
 package sportcity_api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sportcity_api.model.Reserva;
 import sportcity_api.repository.ReservaRepository;
@@ -29,11 +31,32 @@ public class ReservaController {
 
 
     //Crear un nueva reserva (metodo POST)
-    @PostMapping
-    public Reserva crearReserva(@RequestBody Reserva nuevaReserva) {
+//    @PostMapping
+//    public Reserva crearReserva(@RequestBody Reserva nuevaReserva) {
+//
+//        //Guardo la reserva en la lista de reservas
+//        return reservaRepository.save(nuevaReserva);
+//    }
 
-        //Guardo la reserva en la lista de reservas
-        return reservaRepository.save(nuevaReserva);
+    //Crear una nueva reserva (metodo POST) comprueba que la pista que no este reservada
+    @PostMapping
+    public ResponseEntity<?> crearReserva(@RequestBody Reserva nuevaReserva) {
+
+        boolean yaExiste = reservaRepository.existsByPistaIdAndFechaAndHora(
+                nuevaReserva.getPistaId(),
+                nuevaReserva.getFecha(),
+                nuevaReserva.getHora()
+        );
+
+        if (yaExiste) {
+            return ResponseEntity
+                    .status(HttpStatus.CONFLICT)
+                    .body("Esta pista ya está reservada para esa fecha y hora");
+        }
+
+        Reserva reservaGuardada = reservaRepository.save(nuevaReserva);
+
+        return ResponseEntity.ok(reservaGuardada);
     }
 
     //Actualizar una reserva
