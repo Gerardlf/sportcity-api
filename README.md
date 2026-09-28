@@ -27,3 +27,9 @@ Obtiene las reservas almacenadas.
 
 `POST /api/reservas`  
 Crea una nueva reserva.
+
+## 🚀 Despliegue
+
+La API está desplegada en Render y utiliza PostgreSQL como base de datos.
+
+Forma parte del proyecto SportCity y es consumida por la aplicación móvil Android.
